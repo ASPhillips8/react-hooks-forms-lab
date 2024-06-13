@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { v4 as uuid } from "uuid";
 
-function ItemForm(props) {
+function ItemForm({onItemFormSubmit}) {
   const [name, setName] = useState("")
   const [category, setCategory] = useState("Produce")
 
@@ -15,15 +15,14 @@ function ItemForm(props) {
 
   function handleFormSubmit(event) {
     event.preventDefault()
-    const newItem = {
+    const newItem ={
       id: uuid(),
       name: name,
       category: category
     }
-    console.log(newItem) // have new object with id
+    onItemFormSubmit(newItem)
   }
 
-  // need to add new object to items array
 
   return (
     <form className="NewItem" onSubmit={handleFormSubmit}>
